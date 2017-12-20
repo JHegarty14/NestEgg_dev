@@ -28,7 +28,7 @@ require('./routes/billingRoutes')(app);
 if (process.env.NODE_ENV === 'production') {
   // Express will serve production assets - ie main.js / main.class
   app.use(express.static('client/build'));
-  
+
   // Express will serve index.html if route isn't recognized
   const path = require('path');
   app.get('*', (req, res) => {
@@ -36,5 +36,5 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3005;
 app.listen(PORT);

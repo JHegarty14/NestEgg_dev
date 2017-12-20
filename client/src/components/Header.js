@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Payments from './Payments';
+import DropDown from './Dropdown';
 
 class Header extends Component {
   renderContent() {
@@ -10,18 +11,23 @@ class Header extends Component {
         return;
       case false:
         return (
-          <li>
-          <a href="/auth/google">Login</a>
-          </li>
+/*          [
+            <li key="1" style={{ margin: '0 10px' }}>
+              <DropDown />
+            </li>, */
+            <li key="2">
+              <a href="/auth/google">Login</a>
+            </li>
+//          ]
         );
       default:
         return (
           [
-            <li key="1"><Payments /></li>,
-            <li key="2" style={{ margin: '0 10px' }}>
-              Credits: { this.props.auth.credits }
-            </li>,
-            <li key="3"><a href="/api/logout">Logout</a></li>
+            <li key="1"><DropDown /></li>,
+            <li key="3"><a href="/api/logout">Logout</a></li>,
+/*          <li key="2" style={{ margin: '0 10px' }}>
+              <DropDown />
+            </li>*/
           ]
       );
     }
@@ -30,7 +36,7 @@ class Header extends Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper">
+        <div className="nav-wrapper" id="headerContainer">
           <Link
           to={this.props.auth ? '/surveys' : '/'}
           className="left brand-logo"
