@@ -1,48 +1,31 @@
 import { connect } from 'react-redux';
-import * as actions from '../actions';
 import { BrowserRouter, Route } from 'react-router-dom';
 import React, { Component } from 'react';
-const ReactCSSTransitionGroup = require('react-transition-group');
-const ReactDOM = require('react-dom')
+import { Nav, NavDropdown, NavItem, MenuItem, event, eventKey, mountNode } from 'react-bootstrap';
+const ReactDOM = require('react-dom');
 
-class DropDown extends React.Component {
-  constructor(props) {
-    super(props);
-    this.toggleMenu = this.toggleMenu.bind(this);
-    this.state = {
-      menuActive: false
-    };
-  }
-
-  toggleMenu() {
-    let menuState = !this.state.menuActive;
-    this.setState({
-      menuActive: menuState
-    });
-  }
+const NavDropdownExample = React.createClass({
+  handleSelect(eventKey) {
+    event.preventDefault();
+    alert(`selected ${eventKey}`);
+  },
 
   render() {
-    let menu;
-    if(this.state.menuActive) {
-      menu = <div>
-                <ul>
-                  <li>First Item </li>
-                  <li>Second Item </li>
-                  <li>Third Item </li>
-                </ul>
-              </div>
-    } else {
-      menu = "";
-    }
     return (
-      <div id = "menu">
-        <i className = "fa fa-plus" onClick = { this.toggleMenu }/>
-      <ReactCSSTransitionGroup transitionName = "menu" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
-        {menu}
-      </ReactCSSTransitionGroup>
-    </div>
-    )
-  }
-}
+      <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
+        <NavItem eventKey="1" href="/home">NavItem 1 content</NavItem>
+        <NavItem eventKey="2" title="Item">NavItem 2 content</NavItem>
+        <NavItem eventKey="3" disabled>NavItem 3 content</NavItem>
+        <NavDropdown eventKey="4" title="Dropdown" id="nav-dropdown">
+          <MenuItem eventKey="4.1">Action</MenuItem>
+          <MenuItem eventKey="4.2">Another action</MenuItem>
+          <MenuItem eventKey="4.3">Something else here</MenuItem>
+          <MenuItem divider />
+          <MenuItem eventKey="4.4">Separated link</MenuItem>
+        </NavDropdown>
+      </Nav>
+    );
+  },
+});
 
-export default connect(null, actions)(DropDown);
+ReactDOM.render(<NavDropdownExample />, mountNode);

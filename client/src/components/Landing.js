@@ -7,9 +7,10 @@ const image = require('./bklyn.jpg');
 const Landing = () => {
     return (
     <body>
-      <div class="container">
-          <img src= {image} class="cardbg"/>
-            <span class="card-title white-text text-darken-4">Test</span>
+      <div class="jumbotron" justified>
+        <span class="card-title white-text text-darken-4">Test</span>
+        <img src= {image} class="cardbg"/>
+           
       </div>
     </body>
     );
