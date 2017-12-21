@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Payments from './Payments';
 import { NavDropdown, DropdownButton, Button, MenuItem } from 'react-bootstrap';
-import { NavDropdownExample } from './Dropdown';
+import NavDropdownExample from './Dropdown';
 
 class Header extends Component {
   renderContent() {

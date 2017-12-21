@@ -4,10 +4,10 @@
   "private": true,
   "proxy": {
     "/auth/google": {
-      "target": "http://localhost:3005"
+      "target": "http://localhost:5000"
     },
     "/api/*": {
-      "target": "http://localhost:3005"
+      "target": "http://localhost:5000"
     }
   },
   "dependencies": {
@@ -19,8 +19,10 @@
     "dimensions": "^0.1.0",
     "flexbox-react": "^4.4.0",
     "materialize-css": "^0.100.2",
+    "moment": "^2.20.1",
     "npm-git-install": "^0.3.0",
     "react": "^16.2.0",
+    "react-big-calendar": "^0.17.0",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",

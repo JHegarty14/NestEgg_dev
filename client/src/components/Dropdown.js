@@ -1,21 +1,14 @@
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import React, { Component } from 'react';
-import { Nav, NavDropdown, NavItem, MenuItem, event, eventKey, mountNode } from 'react-bootstrap';
+import { Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 const ReactDOM = require('react-dom');
 
-const NavDropdownExample = React.createClass({
-  handleSelect(eventKey) {
-    event.preventDefault();
-    alert(`selected ${eventKey}`);
-  },
+class NavDropdownExample extends Component {
 
   render() {
     return (
       <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
-        <NavItem eventKey="1" href="/home">NavItem 1 content</NavItem>
-        <NavItem eventKey="2" title="Item">NavItem 2 content</NavItem>
-        <NavItem eventKey="3" disabled>NavItem 3 content</NavItem>
         <NavDropdown eventKey="4" title="Dropdown" id="nav-dropdown">
           <MenuItem eventKey="4.1">Action</MenuItem>
           <MenuItem eventKey="4.2">Another action</MenuItem>
@@ -25,7 +18,8 @@ const NavDropdownExample = React.createClass({
         </NavDropdown>
       </Nav>
     );
-  },
-});
+  }
+};
 
-ReactDOM.render(<NavDropdownExample />, mountNode);
+export default NavDropdownExample;
+//ReactDOM.render(<NavDropdownExample />, document.getElementById('dropdown-basic-default'));
