@@ -2,19 +2,17 @@ import React, {
 Component,
 View,
 Text,
-Image,
 StyleSheet
 } from 'react';
-import 'materialize-css/dist/css/materialize.min.css';
+import { Image } from 'react-bootstrap';
+import 'materialize-css/dist/css/materialize.min.css'; 
 //import styles from '../public/stylesheet.css';
-const image = require('./bklyn.jpg');
 
-const styles = StyleSheet.create({
+/*let styles = {
   container: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#000000',
     width: 320
   },
   backdrop: {
@@ -33,21 +31,40 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     color: 'white'
   }
-});
+};*/
 
 
-const Landing = () => {
-    return (
-    <body>
-      <div class="jumbotron" style={styles.container}>
-        <img src= {image} class="cardbg" style={styles.backdrop}>
-          <View style={styles.backdropView}>
-            <Text style={styles.headline}>Test</Text>
-          </View>
-        </img>                     
-      </div>
-    </body>
-    );
-  };
+class Landing extends Component {
+  render() {
+    const bgimage = require('./bklyn.jpg');
+    const background = {
+      backgroundSize : 'auto',
+      overflow: 'hidden'};
+    const headline = {
+      position: 'absolute',
+      top: '18%',
+      left: '50%',
+      color: 'white'
+    };
+    const textStyle = {
+        position: 'absolute', 
+        fontSize: '1rem',
+        top: '25%', 
+        left: '35%',
+        color: 'white'
+      };
+
+      return (
+          <div style={{width: 'auto'}}>
+              <Image 
+                style={background} responsive 
+                src={bgimage}>
+              </Image>
+              <h1 style={headline}>Nestegg</h1>
+                <p style={textStyle}>Collaborative financial advising for recent grads</p>
+          </div>
+      );
+  }
+};
 
 export default Landing;

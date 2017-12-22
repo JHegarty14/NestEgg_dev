@@ -10,13 +10,18 @@ class Header extends Component {
     switch(this.props.auth) {
       case null:
         return(
-            <NavDropdownExample />
+            <NavDropdown />
         );
       case false:
         return (
-            <li key="2">
+          [
+            <li key="1">
               <a href="/auth/google">Login</a>
+            </li>,
+            <li key="2">
+              <NavDropdown />
             </li>
+          ]  
         );
       default:
         return (
