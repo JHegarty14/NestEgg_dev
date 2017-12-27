@@ -22,6 +22,8 @@
     "concurrently": "^3.5.0",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.2",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.5.1",
     "mongoose": "^4.13.2",
     "nodemon": "^1.12.1",
     "npm-git-install": "^0.3.0",

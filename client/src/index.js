@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
+import $ from 'jquery';
 
 import App from './components/App';
 import reducers from './reducers';
@@ -15,7 +16,17 @@ const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,
   document.querySelector('#root')
+//  $(".dropdown-button").dropdown({ hover: false, constrainWidth: false })
 );
+
+const jsdom = require("jsdom").jsdom;
+jsdom.env("", function(err, window) {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    global.$ = require("jquery")(window);
+})
 
 //console.log('STRIPE KEY IS', process.env.REACT_APP_STRIPE_KEY);
 //console.log('Environment is', process.env.NODE_ENV);

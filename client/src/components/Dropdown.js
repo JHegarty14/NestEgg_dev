@@ -4,23 +4,18 @@ import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
-class NavDropdownExample extends Component {
+class NavDd extends Component {
 
 render() {
     return (
-      <li class='dropdown'>
-        <a class='dropdown-toggle' href='#' data-toggle='dropdown'>Test</a>
-            <ul class='dropdown-menu'>
-              <li><a href="#">one</a></li>
-              <li><a href="#">two</a></li>
-              <li class="divider"></li>
-              <li><a href="#">three</a></li>
-              <li><a href="#">four</a></li>
-              <li><a href="#">five</a></li>
-            </ul>
-      </li>    
+      <ul id="dropdown1" class="dropdown-content">
+      <li><a href="#!">one two threee</a></li>
+      <li><a href="#!">two</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">three</a></li>
+      </ul>  
       );
   }
 };
 
-export default NavDropdownExample;
+export default NavDd;

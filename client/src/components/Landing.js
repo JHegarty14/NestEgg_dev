@@ -38,26 +38,26 @@ class Landing extends Component {
   render() {
     const bgimage = require('./bklyn.jpg');
     const background = {
-      backgroundSize : 'auto',
+      backgroundSize : 'inherit',
       overflow: 'hidden'};
     const headline = {
       position: 'absolute',
-      top: '18%',
-      left: '50%',
-      color: 'white'
+      top: '25%',
+      left: '42%',
+      color: '#fdd835'
     };
     const textStyle = {
         position: 'absolute', 
         fontSize: '1rem',
-        top: '25%', 
-        left: '35%',
-        color: 'white'
+        top: '38%', 
+        left: '40%',
+        color: '#fdd835'
       };
 
       return (
-          <div style={{width: 'auto'}}>
+          <div>
               <Image 
-                style={background} responsive 
+                style={background}
                 src={bgimage}>
               </Image>
               <h1 style={headline}>Nestegg</h1>
