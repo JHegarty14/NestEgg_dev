@@ -5,7 +5,8 @@ Text,
 StyleSheet
 } from 'react';
 import { Image } from 'react-bootstrap';
-import 'materialize-css/dist/css/materialize.min.css'; 
+import { Row, Col, img } from 'react-materialize';
+//import 'materialize-css/dist/css/materialize.min.css'; 
 //import styles from '../public/stylesheet.css';
 
 /*let styles = {
@@ -36,9 +37,9 @@ import 'materialize-css/dist/css/materialize.min.css';
 
 class Landing extends Component {
   render() {
-    const bgimage = require('./bklyn.jpg');
+    const bgimage = require('../images/bklyn.jpg');
     const background = {
-      backgroundSize : 'inherit',
+      backgroundSize : 'cover',
       overflow: 'hidden'};
     const headline = {
       position: 'absolute',
@@ -56,14 +57,21 @@ class Landing extends Component {
 
       return (
           <div>
-              <Image 
-                style={background}
-                src={bgimage}>
-              </Image>
-              <h1 style={headline}>Nestegg</h1>
-                <p style={textStyle}>Collaborative financial advising for recent grads</p>
-          </div>
-      );
+            <Row>
+              <Col s={12} m={12} l={12}>
+                <Image
+                  style={background}
+                  src={bgimage} responsive/>
+                <h1 style={headline}>Nestegg</h1>
+                  <p style={textStyle}>Collaborative financial advising for recent grads</p>
+              </Col>
+            </Row>
+            <Row>
+              <Col s={1} m={2} l={3}>TEST TEST TEST
+              </Col>
+            </Row>
+          </div>   
+     );
   }
 };
 

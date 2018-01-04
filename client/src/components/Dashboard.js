@@ -1,5 +1,5 @@
 import React from 'react';
-const backgroundImage = require('./bklyn.jpg');
+const backgroundImage = require('../images/bklyn.jpg');
 //import { LandingBackground, LandingImgText } from '../images/LandingBackground';
 
 const Dashboard = () => {

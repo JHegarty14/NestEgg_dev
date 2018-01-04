@@ -5,9 +5,11 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
+import Login from './Login';
 import Dashboard from './Dashboard';
 import dashCalendar from './Calendar';
 import CalendarNew from './CalendarNew';
+import About from './About';
 
 class App extends Component {
   componentDidMount() {
@@ -21,9 +23,11 @@ class App extends Component {
           <div>
             <Header />
             <Route exact path="/" component={Landing} />
+            <Route exact path="/auth" component={Login} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/calendar" component={dashCalendar} />
-            <Route path="/calendar/new" component={CalendarNew} />
+            <Route exact path="/calendar/new" component={CalendarNew} />
+            <Route exact path="/about" component={About} />
           </div>
         </BrowserRouter>
       </div>

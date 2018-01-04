@@ -4,7 +4,14 @@ module.exports = app => {
   app.get(
     '/auth/google',
     passport.authenticate('google', {
-      scope: ['profile', 'email']
+      scope: ['profile', 'email', 'firstName', 'lastName']
+    })
+  );
+
+  app.get(
+    '/auth/local',
+    passport.authenticate('local', {
+      scope: ['email','firstName', 'lastName']
     })
   );
 
@@ -12,7 +19,7 @@ module.exports = app => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
-      res.redirect('/surveys');
+      res.redirect('/dashboard');
     }
   );
 
