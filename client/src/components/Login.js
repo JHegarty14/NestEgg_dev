@@ -1,4 +1,4 @@
-import React, { Component, Popup } from 'react';
+import React, { Component } from 'react';
 import Popout from 'react-popup';
 import { Grid, Col, Button } from 'react-materialize';
 import ReactDOM from 'react-dom';
@@ -18,11 +18,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <h1>
-          Test test test.
-        </h1>
-      </div>
+      <Popout url='popout.html' title='Window title' onClosing={this.popupClosed}>
+        <div>Popped out content!</div>
+      </Popout>
     );
   }
 };

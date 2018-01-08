@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Payments from './Payments';
-import NavDd from './Dropdown';
+//import Payments from './Payments';
 import { SideNav, SideNavItem, Button, Dropdown, NavItem, Nav } from 'react-materialize';
 import $ from 'jquery';
 

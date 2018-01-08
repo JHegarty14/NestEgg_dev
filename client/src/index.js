@@ -16,7 +16,6 @@ const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,
   document.querySelector('#root')
-//  $(".dropdown-button").dropdown({ hover: false, constrainWidth: false })
 );
 
 const jsdom = require("jsdom").jsdom;
@@ -27,6 +26,3 @@ jsdom.env("", function(err, window) {
     }
     global.$ = require("jquery")(window);
 })
-
-//console.log('STRIPE KEY IS', process.env.REACT_APP_STRIPE_KEY);
-//console.log('Environment is', process.env.NODE_ENV);

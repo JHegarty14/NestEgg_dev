@@ -1,17 +1,13 @@
-import React from 'react';
-const backgroundImage = require('../images/bklyn.jpg');
-//import { LandingBackground, LandingImgText } from '../images/LandingBackground';
+import React, { Component } from 'react';
+import Popout from 'react-popup';
 
-const Dashboard = () => {
-    return (
-        <div>
-          <div className='background-image' style = {{ background: 'url(' + backgroundImage + ')'}}>
-          </div>
-          <h2>
-            Dashboard
-          </h2>
-        </div>
-    );
-};
-
+class Dashboard extends Component {
+  render() {
+    return(
+      <Popout url='popout.html' title='Window title' onClosing={this.popupClosed}>
+        <div>Popped out content!</div>
+      </Popout>
+    )
+  }
+}
 export default Dashboard;

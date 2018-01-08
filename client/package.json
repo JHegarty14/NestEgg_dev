@@ -37,6 +37,9 @@
     "redux-thunk": "^2.2.0",
     "webpack-cli": "^1.5.3"
   },
+  "peerDependencies": {
+    "react": ">=16.x"
+  },
   "scripts": {
     "install": "npm-git install",
     "start": "set PORT=3006 && react-scripts start",

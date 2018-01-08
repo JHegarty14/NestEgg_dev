@@ -1,11 +1,6 @@
-import React, { 
-Component,
-View,
-Text,
-StyleSheet
-} from 'react';
+import React, { Component } from 'react';
 import { Image } from 'react-bootstrap';
-import { Row, Col, img } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 
 
 class Landing extends Component {
