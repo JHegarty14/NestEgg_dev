@@ -6,33 +6,6 @@ StyleSheet
 } from 'react';
 import { Image } from 'react-bootstrap';
 import { Row, Col, img } from 'react-materialize';
-//import 'materialize-css/dist/css/materialize.min.css'; 
-//import styles from '../public/stylesheet.css';
-
-/*let styles = {
-  container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    width: 320
-  },
-  backdrop: {
-    paddingTop: 60,
-    width: 100,
-    height: 120,
-  },
-  backdropView: {
-    height: 120,
-    width: 320,
-    backgroundColor: 'rgba(0,0,0,0)'
-  },
-  headline: {
-    fontSize: 20,
-    textAlign: 'center',
-    backgroundColor: 'rgba(0,0,0,0)',
-    color: 'white'
-  }
-};*/
 
 
 class Landing extends Component {
