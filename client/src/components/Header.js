@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Login from './Login';
 //import Payments from './Payments';
 import { SideNav, SideNavItem, Button, Dropdown, NavItem, Nav } from 'react-materialize';
 import $ from 'jquery';
@@ -28,7 +29,7 @@ class Header extends Component {
         return (
           [
             <li key="1">
-              <a href="/auth">Login</a>
+              <Login />
             </li>,
             <li key="2">
               <Dropdown trigger={<Button style={button}>Drop</Button>}>

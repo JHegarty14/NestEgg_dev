@@ -5,7 +5,6 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-import Login from './Login';
 import Dashboard from './Dashboard';
 import dashCalendar from './Calendar';
 import CalendarNew from './CalendarNew';
@@ -23,7 +22,6 @@ class App extends Component {
           <div>
             <Header />
             <Route exact path="/" component={Landing} />
-            <Route exact path="/auth" component={Login} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/calendar" component={dashCalendar} />
             <Route exact path="/calendar/new" component={CalendarNew} />
