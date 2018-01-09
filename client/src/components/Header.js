@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Login from './Login';
+//import Login from './Login';
 //import Payments from './Payments';
-import { SideNav, SideNavItem, Button, Dropdown, NavItem, Nav } from 'react-materialize';
-import $ from 'jquery';
+import { Button, Dropdown, NavItem } from 'react-materialize';
 
 class Header extends Component {
   renderContent() {
@@ -29,7 +28,7 @@ class Header extends Component {
         return (
           [
             <li key="1">
-              <Login />
+              <a>Login</a>
             </li>,
             <li key="2">
               <Dropdown trigger={<Button style={button}>Drop</Button>}>

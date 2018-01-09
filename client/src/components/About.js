@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 //import { Row, Col } from 'react-materialize';
-import { Image, Row, Col, Grid, circle } from 'react-bootstrap';
+import { Image, Row, Col, Grid } from 'react-bootstrap';
 
 const jackPic =  require('../images/jack_h.jpg')
 const mariaPic = require('../images/maria_c.jpg')
 
-const styles = {
+/*const styles = {
     icon: {
 
     },
     nameText: {
 
     }    
-}
+}*/
 
 class About extends Component {
   render() {
