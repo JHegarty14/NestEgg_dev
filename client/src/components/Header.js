@@ -55,24 +55,26 @@ class Header extends Component {
   render() {
 
     const linkText = {
-      color: '#fdd835',
-      padding: '0 0 0 10px'
+      color: '#ffffff',
+      padding: '0 0 0 8px'
     }
     
     return (
-      <nav className="green darken-4">
-        <div className="nav-wrapper" id="headerContainer">
-          <Link
-          to={this.props.auth ? '/surveys' : '/'}
-          className="left brand-logo"
-          text='#fdd835'>
-            <text style={linkText}>Nestegg</text>
-          </Link>
-          <ul className="right">
-            {this.renderContent()}
-          </ul>
-        </div>
-      </nav>
+      <div className="navbar-fixed">
+        <nav className="blue-grey z-depth-3">
+          <div className="nav-wrapper" id="headerContainer">
+            <Link
+            to={this.props.auth ? '/surveys' : '/'}
+            className="left brand-logo"
+            text='#ffffff'>
+              <text style={linkText}>Nestegg</text>
+            </Link>
+            <ul className="right">
+              {this.renderContent()}
+            </ul>
+          </div>
+        </nav>
+      </div>
     );
   }
 }
