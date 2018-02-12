@@ -9,6 +9,7 @@ import Dashboard from './Dashboard';
 import dashCalendar from './Calendar';
 import CalendarNew from './CalendarNew';
 import About from './About';
+import Footer from './Footer';
 
 class App extends Component {
   componentDidMount() {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route exact path="/calendar" component={dashCalendar} />
             <Route exact path="/calendar/new" component={CalendarNew} />
             <Route exact path="/about" component={About} />
+            <Footer />
           </div>
         </BrowserRouter>
       </div>

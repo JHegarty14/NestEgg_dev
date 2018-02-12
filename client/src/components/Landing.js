@@ -24,7 +24,7 @@ class Landing extends Component {
       };
 
       return (
-          <div>
+          <div className="grey lighten-3">
             <Row>
               <Col s={12} m={12} l={12}>
                 <Image

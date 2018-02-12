@@ -31,12 +31,7 @@ class Header extends Component {
               <a>Login</a>
             </li>,
             <li key="2">
-              <Dropdown trigger={<Button style={button}>Drop</Button>}>
-                <NavItem>one</NavItem>
-                <NavItem>two</NavItem>
-                <NavItem divider />
-                <NavItem href="/about">About Us</NavItem>
-              </Dropdown>
+              <a>Sign Up</a>
             </li>
           ]  
         );
