@@ -28,10 +28,10 @@ class Header extends Component {
         return (
           [
             <li key="1">
-              <a>Login</a>
+              <a href="/api/login">Login</a>
             </li>,
             <li key="2">
-              <a>Sign Up</a>
+              <a href="/api/signup">Sign Up</a>
             </li>
           ]  
         );
