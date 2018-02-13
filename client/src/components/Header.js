@@ -3,37 +3,52 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 //import Login from './Login';
 //import Payments from './Payments';
-import { Button, Dropdown, NavItem } from 'react-materialize';
+import { Button, Dropdown, NavItem, SideNav, SideNavItem } from 'react-materialize';
 
 class Header extends Component {
   renderContent() {
 
     const button = {
-      margin: '0 5px 2px 0'
+      margin: '0 0px 2px 5px',
+      background: '#616161'
     }
 
     switch(this.props.auth) {
       case null:
         return (
           <li key="2">
-            <Dropdown trigger={<Button>Drop</Button>}>
+            <SideNav trigger={<Button><i className="material-icons" style={{ margin: '0 0 14px 0' }}>menu</i></Button>}>
               <NavItem>one</NavItem>
               <NavItem>two</NavItem>
               <NavItem divider />
               <NavItem href="/about">About Us</NavItem>
-            </Dropdown>
+            </SideNav>
           </li>
         );
       case false:
         return (
-          [
+          <li key="2">
+            <SideNav trigger={<Button style={button}><i className="material-icons">menu</i></Button>}>
+              <SideNavItem><div className="uservw">
+                <div>
+                  <img src="" />
+                </div>
+                <a href="/dashboard"><span></span></a>
+              </div></SideNavItem>
+                <SideNavItem>one</SideNavItem>
+                <SideNavItem>two</SideNavItem>
+                <SideNavItem divider />
+                <SideNavItem href="/about">About Us</SideNavItem>
+            </SideNav>
+          </li>
+          /*[
             <li key="1">
               <a href="/api/login">Login</a>
             </li>,
             <li key="2">
               <a href="/api/signup">Sign Up</a>
             </li>
-          ]  
+          ]*/  
         );
       default:
         return (
@@ -41,11 +56,11 @@ class Header extends Component {
             <li key="1"><a href="/api/logout">Logout</a></li>,
             <li key="2">
               <Dropdown trigger={<Button>Drop</Button>}>
-              <NavItem>one</NavItem>
-              <NavItem>two</NavItem>
-              <NavItem divider />
-              <NavItem href="/about">About Us</NavItem>
-            </Dropdown>
+                <NavItem>one</NavItem>
+                <NavItem>two</NavItem>
+                <NavItem divider />
+                <NavItem href="/about">About Us</NavItem>
+              </Dropdown>
             </li>
           ]
       );
@@ -65,11 +80,11 @@ class Header extends Component {
           <div className="nav-wrapper" id="headerContainer">
             <Link
             to={this.props.auth ? '/surveys' : '/'}
-            className="left brand-logo"
+            className="right brand-logo"
             text='#ffffff'>
               <text style={linkText}>Nestegg</text>
             </Link>
-            <ul className="right">
+            <ul className="left">
               {this.renderContent()}
             </ul>
           </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Footer } from 'react-materialize';
+import { Footer, Row } from 'react-materialize';
 //import Flexbox from 'flexbox-react';
 
 class FooterBar extends Component {
@@ -7,7 +7,7 @@ class FooterBar extends Component {
     return (
       <Footer className="blue-grey" copyrights="Copyright Nestegg, 2018">
         <div>
-            <row>
+            <Row>
               <div className="col s3 m3 l3 xl3">
               <h5>About Nestegg</h5>
                 <ul>
@@ -34,7 +34,7 @@ class FooterBar extends Component {
               <img width={120} height={40} src="https://cdn1.venmo.com/production/images/PlayStore.png" alt="Google Play" />
               <img width={120} height={40} src="https://cdn1.venmo.com/production/images/AppStore.png" alt="App Store" />
             </div>
-          </row>
+          </Row>
         </div>
       </Footer>
     )  
