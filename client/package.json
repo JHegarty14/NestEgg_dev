@@ -18,17 +18,17 @@
     "concurrently": "^3.5.0",
     "dimensions": "^0.1.0",
     "flexbox-react": "^4.4.0",
-    "jquery": "^3.2.1",
+    "jquery": "^2.1.1",
     "keymaster": "^1.6.2",
-    "materialize-css": "^0.100.2",
+    "materialize-css": "^0.98.0",
     "moment": "^2.20.1",
     "npm-git-install": "^0.3.0",
-    "react": "^16.2.0",
+    "react": "15.x",
     "react-big-calendar": "^0.17.0",
     "react-bootstrap": "^0.31.5",
-    "react-dom": "^16.2.0",
+    "react-dom": "15.x",
     "react-materialize": "^1.1.2",
-    "react-popup": "^0.9.1",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "^1.1.1",
     "react-stripe-checkout": "^2.6.3",
@@ -38,8 +38,9 @@
     "webpack-cli": "^1.5.3"
   },
   "peerDependencies": {
-    "react": "16.2.0",
-    "react-dom": "~16.2.0"
+    "react": "15.x",
+    "react-dom": "15.x",
+    "jquery": "2.1.1"
   },
   "scripts": {
     "install": "npm-git install",

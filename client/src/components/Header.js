@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-//import Login from './Login';
+import Login from './Login';
+import Signup from './Signup';
 //import Payments from './Payments';
-import { Button, Dropdown, NavItem, SideNav, SideNavItem } from 'react-materialize';
+import { Button, Dropdown, NavItem, SideNav, SideNavItem, Modal, Icon } from 'react-materialize';
 
 class Header extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      showLoginModal: false
+    };
+    this.toggleLoginModal = this.toggleLoginModal.bind(this);
+  }
+  
+  toggleLoginModal() {
+    this.setState({ showLoginModal: !this.state.showLoginModal });
+  }
+
   renderContent() {
 
     const button = {
       margin: '0 0px 2px 5px',
       background: '#616161'
-    }
+    };
 
     switch(this.props.auth) {
       case null:
@@ -27,7 +41,7 @@ class Header extends Component {
         );
       case false:
         return (
-          <li key="2">
+          /*<li key="2">
             <SideNav trigger={<Button style={button}><i className="material-icons">menu</i></Button>}>
               <SideNavItem><div className="uservw">
                 <div>
@@ -40,15 +54,19 @@ class Header extends Component {
                 <SideNavItem divider />
                 <SideNavItem href="/about">About Us</SideNavItem>
             </SideNav>
-          </li>
-          /*[
+          </li>*/
+          [
             <li key="1">
-              <a href="/api/login">Login</a>
+              <Modal header='Login' trigger={ <a>Login</a> } actions="">
+                <Login />
+              </Modal>
             </li>,
             <li key="2">
-              <a href="/api/signup">Sign Up</a>
+              <Modal header='Sign Up' trigger={ <a>Sign Up</a> } actions="">
+                <Signup />
+              </Modal>
             </li>
-          ]*/  
+          ]
         );
       default:
         return (
