@@ -7,8 +7,8 @@ class Signup extends Component {
   render() {
     return (
       <div>
-        <div className="signup">
-          <form className="col s12">
+        <div className="signup login-form">
+          <form className="col s12" action="/signup" method="post">
             <div className="row">
               <div className="input-field col s6">
                 <input placeholder="First Name" id="first_name" type="text" className="validate" />
@@ -33,8 +33,8 @@ class Signup extends Component {
       </div>
       <div className="row">
         <div className="input-field col s12">
-          <input id="v_password" type="password" className="validate" />
-          <label for="v_password" data-error="Passwords do not match">Verify Password</label>
+          <input id="passwordConf" type="password" className="validate" />
+          <label for="passwordConf" data-error="Passwords do not match">Verify Password</label>
         </div>
       </div>
       <div className="row">
@@ -44,12 +44,12 @@ class Signup extends Component {
         </div>
       </div>
       <div className="row">
-        <div className="col s12">
-            <input id="username" type="email" className="validate" />
+        <div className="input-field col s12">
+            <input id="username" type="text" className="validate" />
             <label for="username" data-error="Username is taken!" data-success="Username available!">Username</label>
           </div>
         </div>
-        <Button ><i className='material-icons'>Submit</i></Button>
+        <input type="submit" value="REGISTER" />  
       </form>
      </div>
     </div>
