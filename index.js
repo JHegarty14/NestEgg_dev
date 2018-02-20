@@ -5,9 +5,11 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 require('./models/user');
 require('./services/passport');
+require('./services/config');
 
 mongoose.connect(keys.mongoURI);
 
@@ -22,6 +24,8 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(morgan('dev'));
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
