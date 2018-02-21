@@ -52,7 +52,8 @@ module.exports = app => {
     }
 
     if (req.body.firstName && req.body.lastName && req.body.state &&
-    req.body.email && req.body.password && req.body.passwordConf) {
+    req.body.email && req.body.password && req.body.passwordConf &&
+    req.body.password == req.body.passwordConf) {
 
       const userData = {
         firstName: req.body.firstName,

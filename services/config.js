@@ -1,6 +1,6 @@
 const keys = require('../config/keys');
 
 module.exports = {
-    'secret' : 'tN20thsO=fs!',
+    'secret' : keys.loginSecretKey,
     'database': keys.mongoURI
 }
