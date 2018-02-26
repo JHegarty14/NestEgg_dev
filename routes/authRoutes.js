@@ -1,6 +1,10 @@
 const passport = require('passport');
 const bcrypt = require('bcrypt');
-const User = require('../models/user');
+const mongoose = require('mongoose');
+const recoveryEmail = require('../models/Email');
+const stateList = require('../models/States');
+
+const User = mongoose.model('users');
 
 module.exports = app => {
 

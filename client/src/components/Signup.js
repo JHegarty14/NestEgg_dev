@@ -49,7 +49,7 @@ class Signup extends Component {
             <label for="username" data-error="Username is taken!" data-success="Username available!">Username</label>
           </div>
         </div>
-        <input type="submit" value="REGISTER" />  
+        <input type="submit" value="REGISTER" method="post" />  
       </form>
      </div>
     </div>

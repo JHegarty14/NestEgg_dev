@@ -37,6 +37,10 @@ const userSchema = new Schema({
   state: {
     type: String,
     required: true
+  },
+  income: {
+    type: Number,
+    required: false
   }
 });
 

@@ -31,9 +31,9 @@ class Landing extends Component {
     };
 
       return (
-          <div>
+          <div className="center">
             <div className="center">
-              <Slider className="z-depth-3" indicators={false}>
+              <Slider className="z-depth-3 center" indicators={false}>
                 <Slide src={bgimage} title="Nestegg" placement="center">
                   Collaborative financial advising for recent grads
                 </Slide>
