@@ -8,6 +8,8 @@ const User = mongoose.model('users');
 
 module.exports = app => {
 
+  //Attempt automatic login via cookies
+
   //Google OAuth flow
   app.get(
     '/auth/google',
@@ -37,13 +39,9 @@ module.exports = app => {
 
 //Routing for local auth.
 
-  //Get route
-  app.get('/signup', function(req, res, next) {
-    return res.sendFile(path.join(_dirname + '/index.html'))
-  });
-
   //Post route for updating user info.
-  app.post('/signup', function(req, res, next) {
+  app.post('/auth/signup', (req, res, next) => {
+    console.log('route hit.')
     //check that passwords match
     var password = req.body.password;
     var username = req.body.username;
@@ -56,8 +54,10 @@ module.exports = app => {
     }
 
     if (req.body.firstName && req.body.lastName && req.body.state &&
-    req.body.email && req.body.password && req.body.passwordConf &&
-    req.body.password == req.body.passwordConf) {
+    req.body.email && req.body.password && req.body.username &&
+    req.body.passwordConf) {
+
+      if (req.body.password !== req.body.passwordConf) return res.status(500).send({message: 'Passwords donnot match' })
 
       const userData = {
         firstName: req.body.firstName,
@@ -65,11 +65,18 @@ module.exports = app => {
         state: req.body.state,
         email: req.body.email,
         password: req.body.password,
-        passwordConf: req.body.passwordConf
+        passwordConf: req.body.passwordConf,
+        username: req.body.username
       }
 
+      console.log('Success!' + userData);
+
     User.create(userData, function(error, user) {
-      if (error) return next(error);
+      if (error) {
+        if (error.name === 'MongoError' && error.code === 11000) {
+          return res.status(500).send({ succes: false, message: 'Username is already taken!' })
+        }
+        return next(error)}
       else {
         req.session.userID = user._id;
         return res.redirect('/dashboard');
@@ -89,18 +96,40 @@ module.exports = app => {
       }
     });
   } else {
-    var err = new Error('Please enter info in to all required fields.');
+    /*var err = new Error('Please enter info in to all required fields.');
     err.status = 400;
-    return next(err);
+    return next(err);*/
+    const userData = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      state: req.body.state,
+      email: req.body.email,
+      password: req.body.password,
+      passwordConf: req.body.passwordConf,
+      username: req.body.username
+    }
+    console.log(userData);
   }
 })
 
-//GET route post-registration
-app.get('/dashboard', function(req, res, next) {
-  User.findById(req.session.userId)
-    .exec(function(error, user) {
-      if (error) return next(error);
-      else return res.join({ name: user.firstName, email: user.email });
+  //GET route post-registration
+  app.get('/dashboard', function(req, res, next) {
+    User.findById(req.session.userId)
+      .exec(function(error, user) {
+        if (error) return next(error);
+        else return res.join({ name: user.firstName, email: user.email });
+      });
     });
+
+//Local Login
+
+  app.get('/auth/login', async (req, res) => {
+    const user = await User.findOne({ User: req.body.user })
+    console.log(user)
+    if (user) {
+      if (req.body.password !== user.password) return res.status(500).send({message: 'Incorrect username or password'})
+      else res.redirect('/');
+    }
   });
+
 }

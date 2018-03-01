@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import { Row, Col, Modal } from 'react-materialize';
+import { Row, Col, Modal, Button } from 'react-materialize';
 
 class Login extends Component{
   render() {
   return (
       <div>
           <div className="login">
-              <form className="">
+              <form className="" method="GET" action="/auth/local">
                   <div className="input-field col s8">
                       <i className="material-icons prefix">account_circle</i>
-                      <input  id="username" type="text" className="validate"/>
+                      <input name="name" id="username" type="text" className="validate"/>
                       <label htmlFor="username">User Name</label>
                   </div>
                   <div className="input-field col s8">
                       <i className="material-icons prefix">vpn_key</i>
-                      <input id="password" type="password" className="validate"/>
+                      <input name="password" id="password" type="password" className="validate"/>
                       <label htmlFor="password">Password</label>
                   </div>
                   <div className="center input-field col s6">
-                          <input type="checkbox" className="filled-in" id="filled-in-box" defaultChecked="unchecked" />
+                          <input name="remember" type="checkbox" className="filled-in" id="filled-in-box" defaultChecked="unchecked" />
                           <label htmlFor="filled-in-box">Remember me</label>
                   </div>
                   <div className="center input-field col s12">
-                      <a href="/auth/local" className="login-button waves-effect waves-light btn center">Login</a>
+                      <Button type="submit" value="submit" className="login-button waves-effect waves-light btn center">Login</Button>
                   </div>
                   <div className="center input-field col s12">Or</div>
                   <div className="center input-field col s12">

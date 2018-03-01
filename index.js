@@ -7,14 +7,11 @@ const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-require('./models/user');
-require('./services/passport');
-require('./services/config');
-
 mongoose.connect(keys.mongoURI);
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(
   cookieSession({
@@ -26,6 +23,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(morgan('dev'));
+
+require('./models/user');
+require('./services/passport');
+require('./services/config');
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);

@@ -20,6 +20,62 @@ db.open(function(e) {
     }
 });
 
-const accounts = db.collection('accounts');
+const accounts = mongoose.model('users');
 
 //Login validation
+module.exports = AM;
+
+AM.autoLogin = (user, pw, callback) => {
+    accounts.findOne({user: user}, (e, o) => {
+      if (o) {
+        o.pass == pass ? callback(o) : callback(null);
+      } else {
+        callback(null);
+      }
+    })
+  }
+
+AM.manualLogin = (user, pass, callback) => {
+    accounts.findOne({user: user}, (e, o) => {
+        if (!o) callback('user-not-found');
+        else {
+            validatePassword(pass, o.pass, (err, res) => {
+                if (res) callback(null, o);
+                else callback('invalid-password');
+            });
+        }
+    });
+}
+
+//Add, update, and delete user records
+AM.addNewAccount = (newData, callback) => {
+    accounts.findOne({user: newData.user}, (e, o) => {
+        if (o) callback('username-taken');
+        else {
+            accounts.findOne({email: newData.email}, (e, o) => {
+                if (o) callback('email-taken');
+                else if (o.pass !== o.passConf) {
+                    callback('passwords-do-not-match');
+                } else {
+                    bcrypt.hash(newData.pass, 12, (err, hash) => {
+                        if (err) return err;
+
+                        o.pass = hash
+                        o.passConf = hash
+                        accounts.insert(newData, {safe: true}, callback);
+                    });
+                }
+            })
+        }
+    })
+}
+
+/*AM.updateAccount = (newData, callback) => {
+    accounts.findOne({_id: getObjectId(newData.id)}, (e, o) => {
+        o.name   = newData.name;
+        o.email  = newData.email;
+        o.state  = newData.state;
+
+        if (newData.pass == '')
+    }
+} */

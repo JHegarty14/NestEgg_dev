@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const Mailer = require('../services/Mailer');
-
-const Survey = mongoose.model('surveys');
+const Email = require('../models/Email');
 
 module.exports = app => {
   app.post('/api/surveys', requireLogin, (req, res) => {
