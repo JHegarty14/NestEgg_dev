@@ -9,12 +9,12 @@ class Login extends Component{
               <form className="" method="GET" action="/auth/local">
                   <div className="input-field col s8">
                       <i className="material-icons prefix">account_circle</i>
-                      <input name="name" id="username" type="text" className="validate"/>
+                      <input name="name" id="li-username" type="text" className="validate"/>
                       <label htmlFor="username">User Name</label>
                   </div>
                   <div className="input-field col s8">
                       <i className="material-icons prefix">vpn_key</i>
-                      <input name="password" id="password" type="password" className="validate"/>
+                      <input name="password" id="li-password" type="password" className="validate"/>
                       <label htmlFor="password">Password</label>
                   </div>
                   <div className="center input-field col s6">

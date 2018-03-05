@@ -6,8 +6,7 @@ const userSchema = new Schema({
   username: {
     type: String,
     unique: true,
-    required: true,
-    trim: true
+    required: true
   },
   email: {
     type: String,
@@ -29,6 +28,7 @@ const userSchema = new Schema({
   googleID: {
     type: String,
     unique: true,
+    sparse: true,
     required: false
   },
   passwordConf: {
@@ -42,12 +42,16 @@ const userSchema = new Schema({
   income: {
     type: Number,
     required: false
+  },
+  failedLogins: {
+    type: Number,
+    default: 0
   }
 });
 
-userSchema.statics.authenticate = function (username, password, callback) {
+userSchema.statics.authenticate = (username, password, callback) => {
   User.findOne({ username: username })
-    .exec(function (err, user) {
+    .exec( (err, user) => {
       if (err) return callback(err);
       else if (!user) {
         var err = new Error('Incorrect username or password.');
@@ -55,10 +59,14 @@ userSchema.statics.authenticate = function (username, password, callback) {
         return callback(err);
       }
 
-    bcrypt.compare(password, user.password, function (err, result) {
-      if (result === true) return callback(null, user);
+    bcrypt.compare(password, user.password, (err, result) => {
+      if (result === true) {
+        user.failedLogins = 0;
+        return callback(null, user);
+      }
       else {
-        var err = new Error('Incorrect username or password.')
+        var err = new Error('Incorrect username or password.');
+        user.failedLogins++;
         err.status = 401;
         return callback(err);
       }
@@ -66,18 +74,12 @@ userSchema.statics.authenticate = function (username, password, callback) {
   })
 }
 
-userSchema.pre('save', function(next) {
-  var user = this;
-  bcrypt.hash(user.password, 10, function(err, hash) {
+userSchema.pre('save', function (next) {
+  const user = this;
+  bcrypt.hash(user.password, 12, function (err, hash) {
     if (err) return next(err);
 
     user.password = hash;
-    next();
-  }),
-
-  bcrypt.hash(user.passwordConf, 10, function(err, hash) {
-    if (err) return next(err);
-
     user.passwordConf = hash;
     next();
   })

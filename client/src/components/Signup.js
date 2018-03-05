@@ -26,13 +26,13 @@ class Signup extends Component {
       </div>
       <div className="row">
         <div className="input-field col s12">
-          <input name="password" id="password" type="password" className="validate" />
+          <input name="password" id="su-password" type="password" className="validate" />
           <label for="password">Password</label>
         </div>
       </div>
       <div className="row">
         <div className="input-field col s12">
-          <input name="passwordConf" id="passwordConf" type="password" className="validate" />
+          <input name="passwordConf" id="su-passwordConf" type="password" className="validate" />
           <label for="passwordConf" data-error="Passwords do not match">Verify Password</label>
         </div>
       </div>
@@ -44,7 +44,7 @@ class Signup extends Component {
       </div>
       <div className="row">
         <div className="input-field col s12">
-            <input name="username" id="username" type="text" className="validate" />
+            <input name="username" id="su-username" type="text" className="validate" />
             <label for="username" data-error="Username is taken!" data-success="Username available!">Username</label>
           </div>
         </div>

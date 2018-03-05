@@ -3,13 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": {
-    "/auth/google": {
-      "target": "http://localhost:3005"
-    },
-    "/auth/login": {
-      "target": "http://localhost:3005"
-    },
-    "/auth/signup": {
+    "/auth/*": {
       "target": "http://localhost:3005"
     },
     "/api/*": {
