@@ -76,7 +76,8 @@ userSchema.statics.authenticate = (username, password, callback) => {
 
 userSchema.pre('save', function (next) {
   const user = this;
-  bcrypt.hash(user.password, 12, function (err, hash) {
+  const salt = bcrypt.genSaltSync();
+  bcrypt.hash(user.password, salt, function (err, hash) {
     if (err) return next(err);
 
     user.password = hash;

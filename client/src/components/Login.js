@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { Row, Col, Modal, Button } from 'react-materialize';
 
 class Login extends Component{
+
   render() {
-  return (
+    return (
       <div>
           <div className="login">
-              <form className="" method="GET" action="/auth/local">
+              <form className="" method="POST" action="/auth/login">
                   <div className="input-field col s8">
                       <i className="material-icons prefix">account_circle</i>
-                      <input name="name" id="li-username" type="text" className="validate"/>
+                      <input name="username" id="li-username" type="text" className="validate"/>
                       <label htmlFor="username">User Name</label>
                   </div>
                   <div className="input-field col s8">

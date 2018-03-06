@@ -16,12 +16,3 @@ ReactDOM.render(
   <Provider store={store}><App /></Provider>,
   document.querySelector('#root')
 );
-
-/*const jsdom = require("jsdom").jsdom;
-jsdom.env("", function(err, window) {
-    if (err) {
-        console.error(err);
-        return;
-    }
-    global.$ = require("jquery")(window);
-})*/

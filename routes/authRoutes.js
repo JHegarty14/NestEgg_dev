@@ -6,6 +6,7 @@ const stateList = require('../models/States');
 const requireLogin = require('../middlewares/requireLogin');
 
 const User = mongoose.model('users');
+mongoose.Promise = global.Promise;
 
 module.exports = app => {
 
@@ -69,7 +70,7 @@ module.exports = app => {
     User.create(userData, (error, user) => {
       if (error) {
         if (error.name === 'MongoError' && error.code === 11000) {
-          return res.status(500).send({ succes: false, message: 'Username is already taken!' })
+          return res.status(500).send({ success: false, message: 'Username is already taken!' })
         }
         return next(error)}
       else {
@@ -84,13 +85,9 @@ module.exports = app => {
   }
 })
 
-  //GET route post-registration
-  app.get('/dashboard', requireLogin, (req, res, next) => {
-    User.findById(req.session.userId)
-      .exec(function(error, user) {
-        if (error) return next(error);
-        else return res.join({ name: user.firstName, email: user.email });
-      });
+  //GET route post-registration - tests session
+  app.get('/test-dashboard', requireLogin, (req, res, next) => {
+    res.send("If you can see this, you're logged in")
     });
 
 //Local Login
@@ -104,13 +101,39 @@ module.exports = app => {
 
 //Manual login route
 
-  app.get('/auth/login', async (req, res, done) => {
-    const user = await User.findOne({user: req.body.username});
-    if (!user) return res.status(400).send("Invalid username or password");
-    else {
-      res.redirect('/dashboard');
-      return done(null, user);
-    }
-  });
-
+  app.post('/auth/login', async (req, res, done) => {
+    console.log('route hit')
+    const username = req.body.username
+    const password = req.body.password
+    console.log(password);
+    const user = await User.findOne({ username: username })
+    console.log(user)
+          if (err) return done(err);
+          else if (!user) {
+            var err = new Error('Incorrect username or password.');
+            err.status = 401;
+            return done(err);
+          }
+    
+        bcrypt.compare(password, user.password, function(err, result) {
+          if (result === true) {
+          //reset failed logins to prevent improper account locking
+            user.failedLogins = 0;
+          //Set session info
+            req.user = user;
+            console.log(req.session._id);
+            console.log(req.user);
+          //Disable caching of restricted pages
+            res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+            res.redirect('/dashboard');
+            return done(null, user);
+          }
+          else {
+            var err = new Error('Incorrect username or password.');
+            user.failedLogins++;
+            err.status = 401;
+            return done(err);
+          }
+        })
+    });
 }
