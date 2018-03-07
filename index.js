@@ -28,7 +28,7 @@ require('./models/user');
 require('./services/passport');
 
 require('./routes/authRoutes')(app);
-require('./routes/billingRoutes')(app);
+require('./routes/financeRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve production assets - ie main.js / main.class

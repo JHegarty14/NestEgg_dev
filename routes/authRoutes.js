@@ -75,7 +75,7 @@ module.exports = app => {
         return next(error)}
       else {
         req.session.userID = user._id;
-        return res.redirect('/dashboard');
+        return res.redirect('/portfolio');
       }
     });
   } else {
