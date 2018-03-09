@@ -29,7 +29,7 @@ class Portfolio extends Component {
   constructor(props) {
     super(props)
 
-    this.handler = this.handler.bind(this);
+    this.state = this.state.bind(this);
   }
 
   handler(e) {
