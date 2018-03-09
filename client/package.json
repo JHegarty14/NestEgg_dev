@@ -31,6 +31,7 @@
     "react-big-calendar": "^0.17.0",
     "react-bootstrap": "^0.31.5",
     "react-dom": "15.x",
+    "react-js-pagination": "^3.0.1",
     "react-materialize": "^1.0.6",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
@@ -38,6 +39,7 @@
     "react-stripe-checkout": "^2.6.3",
     "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
+    "redux-form": "^7.3.0",
     "redux-thunk": "^2.2.0",
     "webpack-cli": "^1.5.3"
   },
