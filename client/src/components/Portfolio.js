@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import ReactDOM, { render } from 'react-dom';
 import { Autocomplete, Row, Button } from 'react-materialize';
-import { connect } from 'react-redux';
 import { reduxForm, formValueSelector } from 'redux-form';
+import Page1 from './portFlow/page1';
+import Page2 from './portFlow/page2';
+import Page3 from './portFlow/page3';
 
 const banks = {
   'Sallie Mae': null,
@@ -13,93 +14,77 @@ const banks = {
   'Other': null
 }
 
-class prevBtn extends Component {
-  render() {
-    return <Button onClick={this.prevPage()}>Previous</Button>
-  }
-}
-
-class nextBtn extends Component {
-  render() {
-    return <Button onClick={this.nextPage()}>Next</Button>
-  }
-}
-
 class Portfolio extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = this.state.bind(this);
+  constructor() {
+    super();
+    this.state = {
+      todos: [<Page1 />, <Page2 />, <Page3 />],
+      currentPage: 1,
+      todosPerPage: 1
+    };
+    this.prevPage = this.prevPage.bind(this);
+    this.nextPage = this.nextPage.bind(this);
   }
 
-  handler(e) {
-    e.preventDefault()
+  prevPage(event) {
     this.setState({
-      page: 0
+      currentPage: this.state.currentPage - 1
+    });
+  }
+
+  nextPage(event) {
+    this.setState({
+      currentPage: this.state.currentPage + 1
     })
   }
 
-  prevPage = () => {
-    this.setState(state => ({
-      page: state.page - 1
-    }))
-  }
+  render() {
+    const { todos, currentPage, todosPerPage } = this.state;
 
-  nextPage = () => {
-    this.setState(state => ({
-      page: state.page + 1
-    }))
-  }
+    // Logic for displaying current todos
+    const indexOfLastTodo = currentPage * todosPerPage;
+    const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
+    const currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
 
-  renderContent() {
-    switch(page) {
-      case 0:
-        return(
-          <div>
-            Page 1
-          </div>
-        )
-      case 1:
-        return(
-          <div>
-            Page 2
-          </div>
-        )
-    }
-  }
-    render() {
-        return(
-            <div>
-              <div className="container">
-                  <div id="pages">
-                  {this.renderContent()}
-                  <div className="page">
-                    <div className="row">
-                      <h5>Welcome to Nestegg!</h5>
-                      <p>Let's get started with some fuckin LOAN PAYMENTS</p>
-                    </div>
-                    <div className="row">
-                      <label for="instiution" className="input-field col s4">Select your loan provider:</label>
-                    </div>
-                    <div className="input-field col s8">
-                      <Autocomplete id="inst" title="Institution" data={banks} />             
-                    </div>
-                    <div className="buttons">
-                      <prevBtn handler={this.handler} />
-                      <nextBtn handler={this.handler} />
-                    </div>
-                  </div>
-                  </div>
-                    <div className="row">
-                    </div>
-              </div>
-            </div>
-        )
-    }
-}
+    const renderTodos = currentTodos.map((todo, index) => {
+      return <div key={index}>{todo}</div>;
+    });
 
-function mapStateToProps({ page }) {
-  return { page };
+    // Logic for displaying nav buttons
+    const pageNumbers = [1];
+
+    const renderButtons = pageNumbers.map(number => {
+      if (this.state.currentPage === 1) {
+        return(
+          <Row>
+            <Button type="submit" onClick={this.nextPage}>Next</Button>
+          </Row>
+        )
+      } else if (this.state.currentPage === todos.length) {
+        return(
+          <Row>
+            <Button type="submit" onClick={this.prevPage}>Previous</Button>
+            <Button type="submit" value>Submit</Button>
+          </Row>
+        )
+      }
+      return (
+        <Row>
+          <Button type="submit" onClick={this.prevPage}>Previous</Button>
+          <Button type="submit" onClick={this.nextPage}>Next</Button>
+        </Row>
+      );
+    });
+
+    return (
+      <div className="container">
+        <form method="POST" action="/portfolio">
+          {renderTodos}
+          {renderButtons}
+        </form>
+      </div>
+    );
+  }
 }
 /*SelectingFormValuesForm = reduxForm({
   form: 'selectFormValues'

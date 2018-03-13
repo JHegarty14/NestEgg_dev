@@ -2,11 +2,15 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const portfolioSchema = new Schema({
-  source: String,
-  total: Number,
+  provider: String,
+  amount: Number,
+  dateReceived: Date,
   interest: Number,
   type: String,
-  repaid: { type: Boolean, default: false }
+  paidToDate: Number,
+  repaid: { type: Boolean, default: false },
+  dateAdded: Date
 });
 
-module.exports = portfolioSchema;
+var portfolio = mongoose.model('portfolios', portfolioSchema)
+module.exports = portfolio;

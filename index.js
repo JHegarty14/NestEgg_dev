@@ -24,7 +24,8 @@ app.use(passport.session());
 
 app.use(morgan('dev'));
 
-require('./models/user');
+require('./models/User');
+require('./models/Recipient')
 require('./services/passport');
 
 require('./routes/authRoutes')(app);
