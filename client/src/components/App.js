@@ -26,7 +26,7 @@ class App extends Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/calendar" component={dashCalendar} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/portfolio" component={Portfolio} />
+            <Route path="/portfolio" component={Portfolio} />
             <Footer />
           </div>
         </BrowserRouter>

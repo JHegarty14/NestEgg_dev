@@ -1,3 +1,5 @@
+const express = require('express');
+const app = express.Router();
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 const requireLogin = require('../middlewares/requireLogin');
@@ -18,22 +20,12 @@ const portData = {
 };
 
 module.exports = app => {
-  app.post('/portfolio', async (req, res, done) => {
-    console.log('route hit' + req.body.provider)
-    const user = await User.findById(req.session._id)
-    console.log(user)
-    if (err) return done(err);
-    else if (user) {
-      if (!req.body.provider) return res.status(500).send('Please fill out all required forms.');
-    
-      
-    }
-    /*if (req.body.provider) {
-      console.log(req.body.provider);
-      portData.provider = req.body.provider
-      res.redirect('/dashboard');
-    }*/
+  app.get('/add', (req, res) => {
+    console.log('get route hit.')
+  })
 
+  app.post('/add', async (req, res, done) => {
+    console.log('post route hit')
   })
 };
 

@@ -55,6 +55,7 @@ class Portfolio extends Component {
 
     const renderButtons = pageNumbers.map(number => {
       if (this.state.currentPage === 1) {
+        console.log(window.location.pathname)
         return(
           <Row>
             <Button type="submit" onClick={this.nextPage}>Next</Button>

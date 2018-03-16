@@ -136,4 +136,13 @@ module.exports = app => {
           }
         })
     });
+
+  //Portfolio flow
+    app.get('/portfolio', (req, res) => {
+      console.log('get route hit.')
+    })
+  
+    app.post('/portfolio', (req, res) => {
+      console.log('post route hit')
+    })
 }

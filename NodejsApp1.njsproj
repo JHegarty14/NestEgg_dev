@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6d89e006-54b7-4181-835b-0dcc0398d4d1}</ProjectGuid>
+    <ProjectHome />
+    <ProjectView>ShowAllFiles</ProjectView>
+    <StartupFile>index.js</StartupFile>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <ItemGroup>
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <Compile Include="index.js" />
+    <Content Include="client\package-lock.json" />
+    <Content Include="client\package.json" />
+    <Content Include="client\README.md" />
+    <Compile Include="config\dev.js" />
+    <Compile Include="config\keys.js" />
+    <Compile Include="config\prod.js" />
+    <Compile Include="middlewares\requireLogin.js" />
+    <Compile Include="models\Account.js" />
+    <Compile Include="models\Email.js" />
+    <Compile Include="models\Recipient.js" />
+    <Compile Include="models\States.js" />
+    <Compile Include="models\Survey.js" />
+    <Compile Include="models\User.js" />
+    <Compile Include="routes\authRoutes.js" />
+    <Compile Include="routes\financeRoutes.js" />
+    <Compile Include="routes\surveyRoutes.js" />
+    <Compile Include="services\Mailer.js" />
+    <Compile Include="services\passport.js" />
+    <Content Include="client\public\index.html" />
+    <Content Include="client\public\stylesheet.css" />
+    <Content Include="client\public\favicon.ico" />
+    <Content Include="client\public\manifest.json" />
+    <Compile Include="client\src\index.js" />
+    <Compile Include="client\src\registerServiceWorker.js" />
+    <Compile Include="client\src\webpack.config.js" />
+    <Compile Include="client\src\actions\index.js" />
+    <Compile Include="client\src\actions\types.js" />
+    <Compile Include="client\src\components\About.js" />
+    <Compile Include="client\src\components\App.js" />
+    <Compile Include="client\src\components\Calendar.js" />
+    <Compile Include="client\src\components\CalendarNew.js" />
+    <Compile Include="client\src\components\Dashboard.js" />
+    <Compile Include="client\src\components\Footer.js" />
+    <Compile Include="client\src\components\Header.js" />
+    <Compile Include="client\src\components\Landing.js" />
+    <Compile Include="client\src\components\Login.js" />
+    <Compile Include="client\src\components\Payments.js" />
+    <Compile Include="client\src\components\Portfolio.js" />
+    <Compile Include="client\src\components\Signup.js" />
+    <Content Include="client\src\images\bklyn.jpg" />
+    <Content Include="client\src\images\jack_h.jpg" />
+    <Content Include="client\src\images\maria_c.jpg" />
+    <Compile Include="client\src\reducers\authReducer.js" />
+    <Compile Include="client\src\reducers\index.js" />
+    <Compile Include="client\src\components\portFlow\page1.js" />
+    <Compile Include="client\src\components\portFlow\page2.js" />
+    <Compile Include="client\src\components\portFlow\page3.js" />
+    <Compile Include="services\emailTemplates\surveyTemplate.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="client" />
+    <Folder Include="client\etc" />
+    <Folder Include="client\public" />
+    <Folder Include="client\src" />
+    <Folder Include="client\src\actions" />
+    <Folder Include="client\src\components" />
+    <Folder Include="client\src\components\portFlow" />
+    <Folder Include="client\src\images" />
+    <Folder Include="client\src\reducers" />
+    <Folder Include="config" />
+    <Folder Include="middlewares" />
+    <Folder Include="models" />
+    <Folder Include="routes" />
+    <Folder Include="services" />
+    <Folder Include="services\emailTemplates" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\cookie-session\" />
+    <Folder Include="typings\globals\moment\" />
+    <Folder Include="typings\globals\mongoose\" />
+    <Folder Include="typings\globals\node\" />
+    <Folder Include="typings\globals\passport\" />
+    <Folder Include="typings\globals\stripe\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\cookie-session\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\moment\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\mongoose\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\passport\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\stripe\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
