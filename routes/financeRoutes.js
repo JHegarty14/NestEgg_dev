@@ -20,12 +20,13 @@ const portData = {
 };
 
 module.exports = app => {
-  app.get('/add', (req, res) => {
-    console.log('get route hit.')
-  })
 
-  app.post('/add', async (req, res, done) => {
+  app.post('/auth/portfolio', async (req, res, done) => {
     console.log('post route hit')
+    console.log(req.body.provider)
+    portData.provider = req.body.provider
+    console.log(portData.provider);
+    res.redirect('/dashboard');
   })
 };
 

@@ -27,15 +27,18 @@ class Portfolio extends Component {
   }
 
   prevPage(event) {
+    event.preventDefault();
     this.setState({
       currentPage: this.state.currentPage - 1
     });
   }
 
   nextPage(event) {
+    event.preventDefault();
     this.setState({
       currentPage: this.state.currentPage + 1
     })
+    console.log(this.state);
   }
 
   render() {
@@ -55,31 +58,30 @@ class Portfolio extends Component {
 
     const renderButtons = pageNumbers.map(number => {
       if (this.state.currentPage === 1) {
-        console.log(window.location.pathname)
         return(
           <Row>
-            <Button type="submit" onClick={this.nextPage}>Next</Button>
+            <Button type="submit" value="submit" onClick={this.nextPage}>Next</Button>
           </Row>
         )
       } else if (this.state.currentPage === todos.length) {
         return(
           <Row>
-            <Button type="submit" onClick={this.prevPage}>Previous</Button>
-            <Button type="submit" value>Submit</Button>
+            <Button onClick={this.prevPage}>Previous</Button>
+            <Button type="submit" value="submit">Submit</Button>
           </Row>
         )
       }
       return (
         <Row>
-          <Button type="submit" onClick={this.prevPage}>Previous</Button>
-          <Button type="submit" onClick={this.nextPage}>Next</Button>
+          <Button onClick={this.prevPage}>Previous</Button>
+          <Button type="submit" value="submit" onClick={this.nextPage}>Next</Button>
         </Row>
       );
     });
 
     return (
       <div className="container">
-        <form method="POST" action="/portfolio">
+        <form method="POST" action="/auth/portfolio">
           {renderTodos}
           {renderButtons}
         </form>
