@@ -38,7 +38,6 @@ class Portfolio extends Component {
     this.setState({
       currentPage: this.state.currentPage + 1
     })
-    console.log(this.state);
   }
 
   render() {
